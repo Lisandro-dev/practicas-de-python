@@ -12,7 +12,7 @@ c="es genial"
 e=" ".join([a,b,c])
 #find sirve para buscar un determinado caracter dentro del string (como index)
 #cuando find no encuentra nada devuelve el valor -1
-resultado_find=texto.find("t")
+resultado_find=texto.find("e")
 #replace reemplaza un fragmento del texto por otro, necesita el texto a eliminar y el texto a colocar
 resultado_repalce=texto.replace("ejemplo", "mentira")
 print(resultado)
