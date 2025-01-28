@@ -1,4 +1,4 @@
-from random import shuffle
+import random
 from random import randint
 
 #Lista inicial
@@ -61,3 +61,17 @@ para_prom=reducir_lista(lista_numero)
 print(f"La lista reducida es {para_prom}")
 prom=promedio(para_prom)
 print(f"el promedio es {prom}")
+
+#Práctica 3
+lista_num=[1,5,8,7,3,4]
+def lanzar_moneda():
+    lanzamiento=random.choice(["Cara", "Cruz"])
+    return lanzamiento
+def probar_suerte(lanzamiento, lista):
+    if lanzamiento == "Cara":
+        print(f"La lista fue salvada, y es {lista}")
+    else:
+        lista=[]
+        print(f"La lista se destruyo y es {lista}")
+intento=lanzar_moneda()
+probar_suerte(intento,lista_num)
