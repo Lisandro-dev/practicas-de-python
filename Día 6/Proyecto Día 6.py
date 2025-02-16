@@ -100,10 +100,22 @@ def leer_receta(archivo: Path):
     except Exception as e:
         print(f"Error al leer el archivo: {e}")
 
+def nombre_receta():
+    while True:
+        nombre = input("Ingrese el nombre de la receta: ").strip()
+        if nombre:
+            return nombre + ".txt"
+        else:
+            print("El nombre no puede estar vacío. Intente de nuevo.")
 
+def contenido_receta(nombre):
+    with open(f"{nombre}.txt", 'a', encoding="utf-8") as archivo:  # Asegura que el archivo se cierre automáticamente
+        while True:
+            contenido = input("Ingrese el contenido de la receta (o escriba 'FIN' para terminar): ")
+            if contenido.upper() == "FIN":
+                break  # Sale del bucle si el usuario escribe 'FIN'
+            archivo.write(contenido + "\n")  # Agrega el contenido con un salto de línea
 
-
-#EJECUCIÓN
 bienvenida()
 
 while terminado:
@@ -119,7 +131,16 @@ while terminado:
             if receta_pedida:
                 leer_receta(receta_pedida)
     elif opcion == 2:  # Escribir una receta nueva
-        print("📄 Función para escribir recetas aún no implementada.")
+        print("Vamos a crear una receta!")
+        categoria_seleccionada = pedircategorias()
+        if categoria_seleccionada:  # Verifica que el usuario haya seleccionado una categoría válida
+            limpiar_consola()
+            nombre = nombre_receta()  # Obtiene el nombre de la receta
+            ruta_completa = categoria_seleccionada / f"{nombre}.txt"  # Ruta donde se guardará la receta
+            contenido_receta(ruta_completa)  # Guarda el contenido en el archivo
+            print(f"Receta '{nombre}' creada con éxito en '{categoria_seleccionada.name}'!")
+
+
     elif opcion == 3:  # Crear una nueva categoría
         print("📁 Función para crear categorías aún no implementada.")
     elif opcion == 4:  # Eliminar una receta
