@@ -116,6 +116,9 @@ def contenido_receta(nombre):
                 break  # Sale del bucle si el usuario escribe 'FIN'
             archivo.write(contenido + "\n")  # Agrega el contenido con un salto de línea
 
+
+
+
 bienvenida()
 
 while terminado:
